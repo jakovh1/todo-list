@@ -17,6 +17,7 @@ const createProject = () => {
       return newProject
     } else {
       alert("Please enter the project name.")
+      false
     }
 }
 

@@ -1,10 +1,6 @@
 import "./styles.scss";
-import { addNewProjectButton,
-         removeNewProjectComponent, 
-         renderProjects, 
-         renderTodos,
-         renderTodoView,
-         enableEditMode } from "./js/dom";
+
+import { addNewProjectButton, removeNewProjectComponent, renderProjects, renderTodoView, enableEditMode } from "./js/dom";
 import { Project } from "./js/project.js"
 import { storageHelper } from "./js/storage.js";
 import { createProject } from "./js/projectCreationHandler.js";
@@ -16,10 +12,13 @@ document.addEventListener('click', (event) => {
   if (event.target.id == 'create-project-button') {
 
     const newProject = createProject()
-    renderProjects(storageHelper.get('projects'))
-    removeNewProjectComponent()
+    if (newProject) {
+      renderProjects(storageHelper.get('projects'))
+      removeNewProjectComponent()
+      
+      window.location.hash = newProject.name
+    }
     
-    window.location.hash = newProject.name
   } else if (event.target.id == 'save-todo-button') {
       event.preventDefault()
       
@@ -30,7 +29,6 @@ document.addEventListener('click', (event) => {
         
         const newTodo = handleTodoCreation(projectNavItem, projectName)
         if (newTodo) {
-          renderTodos(storageHelper.get('projects')[projectNavItem.id].items, projectName)
           window.location.hash = `${projectName}/${newTodo.name}`
         }
         
@@ -47,7 +45,6 @@ document.addEventListener('click', (event) => {
 
     if (handleTodoDeletion(projectNavItem, todoNavItem)) {
       document.getElementById('todo-view').innerHTML = ''
-      renderTodos(storageHelper.get('projects')[projectNavItem.id].items, projectName)
       window.location.hash = projectName
     }
     
