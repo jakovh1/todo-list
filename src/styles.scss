@@ -1,3 +1,89 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  height: 100vh;
+  .main-container {
+    display: flex;
+
+    li {
+      a {
+        text-decoration: none;
+        h5 {
+          padding: 0.6rem 0;
+          margin: 0;
+        }
+      }
+    }
+
+    li:hover {
+      background-color: rgba(83, 83, 83, 0.301);
+    }
+
+    li.active {
+      background-color: rgba(83, 83, 83, 0.301);
+    }
+
+    #projects-container {
+      flex: 1;
+      border: 1px solid black;
+
+      #projects {
+        list-style: none;
+        padding-inline-start: 20px;
+        
+      }
+
+      .new-project-component {
+        border: 1px solid black;
+
+        .new-project-header {
+          display: flex;
+          justify-content: space-between;
+          
+          .close-button {
+            width: 25px;
+            padding: 0;
+            background: transparent;
+            outline: none;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    #todos-container {
+      flex: 1;
+      border: 1px solid black;
+      border-left: none;
+
+      #todos {
+        list-style: none;
+        padding-inline-start: 20px;
+        
+        .todo-item {
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    #todo-view {
+      flex: 3;
+      border: 1px solid black;
+      border-left: none;
+
+      #todo-form {
+        .input-wrapper {
+          label {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+  }
+}

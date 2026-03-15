@@ -32,6 +32,10 @@ module.exports = {
         loader: "html-loader",
       },
       {
+        test: /\.svg$/i,
+        use: 'raw-loader',
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: "asset/resource",
       }
